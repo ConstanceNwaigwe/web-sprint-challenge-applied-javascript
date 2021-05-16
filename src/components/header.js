@@ -49,7 +49,9 @@ const headerAppender = (selector) => {
   header.classList.add("header");
   document.querySelector(selector)[0].appendChild(header);*/
 
-  document.querySelector(".header-container")[0].appendChild(selector);
+  let header = Header("Title", "5/16/3300", "98 F");
+
+  document.querySelector(selector).appendChild(header);
 
 
 }
