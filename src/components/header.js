@@ -12,21 +12,28 @@ const Header = (title, date, temp) => {
   //  </div>
   //
 
-
+  let header = document.createElement("div");
+  header.classList.add("header");
 
   let dateSpan = document.createElement("span");
   dateSpan.classList.add("date");
   dateSpan.textContent = date;
-  document.querySelector(".header")[0].appendChild(dateSpan);
+  //document.querySelector(".header")[0].appendChild(dateSpan);
+  header.appendChild(dateSpan);
 
   let h1title = document.createElement("h1");
   h1title.textContent = title;
-  document.querySelector(".header")[0].appendChild(h1title);
+  //document.querySelector(".header")[0].appendChild(h1title);
+  header.appendChild(h1title);
 
   let tempSpan = document.createElement("span");
   tempSpan.classList.add("temp");
   tempSpan.textContent = temp;
-  document.querySelector(".header")[0].appendChild(tempSpan);
+  //document.querySelector(".header")[0].appendChild(tempSpan);
+  header.appendChild(tempSpan);
+
+  return header;
+
 
 }
 
@@ -38,9 +45,12 @@ const headerAppender = (selector) => {
   // It should append the header to the element in the DOM that matches the given selector.
   //
 
-  let header = document.createElement("div");
+  /*let header = document.createElement("div");
   header.classList.add("header");
-  document.querySelector(selector)[0].appendChild(header);
+  document.querySelector(selector)[0].appendChild(header);*/
+
+  document.querySelector(".header-container")[0].appendChild(selector);
+
 
 }
 
