@@ -44,6 +44,13 @@ const tabsAppender = (selector) => {
   // Find the array of topics inside the response, and create the tabs using the Tabs component.
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
   //
+
+  let topics = ['javascript', 'bootstrap', 'technology'];
+
+  let tabs = Tabs(topics);
+
+  document.querySelector(selector).appendChild(tabs);
+
 }
 
 export { Tabs, tabsAppender }
