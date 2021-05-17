@@ -1,3 +1,6 @@
+import axios from 'axios';
+import { response } from 'msw';
+
 const Tabs = (topics) => {
   // TASK 3
   // ---------------------
@@ -17,12 +20,14 @@ const Tabs = (topics) => {
   let topic = document.createElement("div");
   topic.classList.add("topics");
   
-  let tab1 = document.createElement("div");
-  tab1.textContent = topics[0];
-  topic.appendChild(tab1);
-  tab1.classList.add("tab");
+  for (let i = 0; i < topics.length; i++){
+    let tab1 = document.createElement("div");
+    tab1.textContent = topics[i];
+    topic.appendChild(tab1);
+    tab1.classList.add("tab");
+  }
   
-  let tab2 = document.createElement("div");
+  /*let tab2 = document.createElement("div");
   tab2.textContent = topics[1];
   topic.appendChild(tab2);
   tab2.classList.add("tab");
@@ -30,7 +35,7 @@ const Tabs = (topics) => {
   let tab3 = document.createElement("div");
   tab3.textContent = topics[2];
   topic.appendChild(tab3);
-  tab3.classList.add("tab");
+  tab3.classList.add("tab");*/
 
   return topic;
 
@@ -45,11 +50,21 @@ const tabsAppender = (selector) => {
   // Append the tabs to the element in the DOM that matches the selector passed to the function.
   //
 
-  let topics = ['javascript', 'bootstrap', 'technology'];
+  axios
+  .get("https://lambda-times-api.herokuapp.com/topics")
+  .then((response) => 
+  {
+    let tabs = Tabs(response["topics"]);
 
-  let tabs = Tabs(topics);
+    document.querySelector(selector).appendChild(tabs);
+  }
+  )
 
-  document.querySelector(selector).appendChild(tabs);
+  //let topics = ['javascript', 'bootstrap', 'technology'];
+
+  //let tabs = Tabs(topics);
+
+  //document.querySelector(selector).appendChild(tabs);
 
 }
 
